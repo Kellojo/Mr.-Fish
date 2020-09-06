@@ -22,6 +22,7 @@ If you want to use the bot without having to focus the Minecraft Window do the f
 ## Default Startup
 1. select the minecraft process in the combobox.
 2. Make sure the displayed values change when breaking blocks.
-3. Set the "Auslöser Lautstärke:" or trigger volume to something lower than the sound of the fishing rod.
-4. Press "Start" and focus the Minecraft windos.
+3. Turn down the Minecraft music, otherwise it might interfere.
+4. Set the trigger volume to something lower than the sound of the fishing rod.
+5. Press start and focus the Minecraft window.
 
