@@ -9,3 +9,19 @@ c:\users\kellojo\documents\visual studio 2015\Projects\Mr Fish\Mr Fish\obj\Debug
 c:\users\kellojo\documents\visual studio 2015\Projects\Mr Fish\Mr Fish\obj\Debug\Mr Fish.pdb
 C:\Users\Kellojo\documents\visual studio 2015\Projects\Mr Fish\Mr Fish\bin\Debug\CSCore.dll
 C:\Users\Kellojo\documents\visual studio 2015\Projects\Mr Fish\Mr Fish\bin\Debug\CSCore.xml
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\obj\Debug\Mr Fish.csprojAssemblyReference.cache
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\obj\Debug\Mr_Fish.Form1.resources
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\obj\Debug\Mr_Fish.Properties.Resources.resources
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\obj\Debug\Mr Fish.csproj.GenerateResource.cache
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\obj\Debug\Mr Fish.csproj.CoreCompileInputs.cache
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\obj\Debug\Mr Fish.exe
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\obj\Debug\Mr Fish.pdb
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\bin\Debug\Mr Fish.exe.config
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\bin\Debug\Mr Fish.exe
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\bin\Debug\Mr Fish.pdb
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\bin\Debug\Costura.dll
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\bin\Debug\CSCore.dll
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\bin\Debug\Costura.xml
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\bin\Debug\CSCore.xml
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\obj\Debug\Mr Fish.csproj.Fody.CopyLocal.cache
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\obj\Debug\Mr Fish.csproj.CopyComplete

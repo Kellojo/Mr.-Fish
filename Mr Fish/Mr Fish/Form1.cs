@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using CSCore.CoreAudioAPI;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Mr_Fish
 {
@@ -14,6 +15,7 @@ namespace Mr_Fish
         static public Thread botThread;
         static public bool active = false;
         static public int pID = 0;
+        private DateTime startTime;
 
         [DllImport("user32.dll")]
         public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
@@ -24,15 +26,15 @@ namespace Mr_Fish
 
         public Form1()
         {
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+
             InitializeComponent();
+            updateStartStopButtons();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
             addProcesses();
-            //System.Threading.Thread.Sleep(5000);
-            //SendKeys.Send("Hello");
-            //VirtualMouse.MoveTo(0, 0);
-            //VirtualMouse.RightClick();
         }
 
         private void addProcesses()
@@ -46,10 +48,10 @@ namespace Mr_Fish
                     var pID = theprocess.Id;
                     var i = cb_processes.Items.Add(new Item(txt, pID));
 
-                    if (txt.Contains("Minecraft"))
+                    if (txt.Contains("Minecraft") && txt != "Minecraft Launcher")
                     {
                         cb_processes.SelectedIndex = i;
-                        tssl_status.Text = "Minecraft gefunden...";
+                        tssl_status.Text = "Minecraft found...";
                     }
                 }
             }
@@ -58,7 +60,6 @@ namespace Mr_Fish
         {
             try
             {
-                //VirtualMouse.RightClick();
                 send_rightclick(pID);
                 var oVol = 0;
                 System.Threading.Thread.Sleep(4000);
@@ -71,7 +72,6 @@ namespace Mr_Fish
                     }
                 }
 
-                //VirtualMouse.RightClick();
                 send_rightclick(pID);
                 fished = fished + 1;
             }
@@ -129,7 +129,6 @@ namespace Mr_Fish
             {
                 using (var device = enumerator.GetDefaultAudioEndpoint(dataFlow, CSCore.CoreAudioAPI.Role.Multimedia))
                 {
-                    Console.WriteLine("DefaultDevice: " + device.FriendlyName);
                     var sessionManager = AudioSessionManager2.FromMMDevice(device);
                     return sessionManager;
                 }
@@ -158,6 +157,23 @@ namespace Mr_Fish
 
         }
 
+        private void formatStatusText()
+        {
+            if (active)
+            {
+                TimeSpan duration = DateTime.Now.Subtract(startTime);
+                string durationString = duration.ToString(@"d\:hh\:mm\:ss");
+                string perHour = Math.Floor(fished / duration.TotalHours).ToString();
+                tssl_status.Text = "Active for " + durationString + ", ~" + perHour + " catches/hour, current " + fished;
+            }
+        }
+        private void updateStartStopButtons()
+        {
+            btn_start.Enabled = !active;
+            btn_stop.Enabled = active;
+        }
+
+
         private void cb_processes_SelectedIndexChanged(object sender, EventArgs e)
         {
             Item itm = (Item)cb_processes.SelectedItem;
@@ -182,30 +198,47 @@ namespace Mr_Fish
             {
                 try
                 {
-                    lbl_fished.Text = fished.ToString();
+                    formatStatusText();
                     Item itm = (Item)cb_processes.SelectedItem;
 
-                    var sessionManager = GetDefaultAudioSessionManager2(CSCore.CoreAudioAPI.DataFlow.Render);
-                    var sessionEnumerator = sessionManager.GetSessionEnumerator();
-                    foreach (var session in sessionEnumerator)
+                    Task.Run(() =>
                     {
-                        var audioMeterInformation = session.QueryInterface<CSCore.CoreAudioAPI.AudioMeterInformation>();
-                        var session2 = session.QueryInterface<AudioSessionControl2>();
-                        var processID = session2.ProcessID;
-                        if (processID == pID)
+                        var sessionManager = GetDefaultAudioSessionManager2(CSCore.CoreAudioAPI.DataFlow.Render);
+                        var sessionEnumerator = sessionManager.GetSessionEnumerator();
+                        foreach (var session in sessionEnumerator)
                         {
-                            pb_audio.Maximum = 1000;
-                            var vol = (int)(audioMeterInformation.GetPeakValue() * 1000);
-                            pb_audio.Value = vol;
-                            lbl_curVol.Text = vol.ToString();
+                            var audioMeterInformation = session.QueryInterface<CSCore.CoreAudioAPI.AudioMeterInformation>();
+                            var session2 = session.QueryInterface<AudioSessionControl2>();
+                            var processID = session2.ProcessID;
 
-                            if (highVal < vol)
+                            if (processID == pID)
                             {
-                                highVal = vol;
-                                lbl_maxVol.Text = highVal.ToString();
+                            
+                            
+                                var vol = (int)(audioMeterInformation.GetPeakValue() * 1000);
+                            
+                                this.pb_audio.Invoke((MethodInvoker)delegate
+                                {
+                                    pb_audio.Maximum = 1000;
+                                    pb_audio.Value = vol;
+                                    lbl_curVol.Text = vol.ToString();
+                                });
+
+                                Debug.WriteLine(audioMeterInformation.GetPeakValue());
+                                if (highVal < vol)
+                                {
+
+                                    this.lbl_maxVol.Invoke((MethodInvoker)delegate
+                                    {
+                                        highVal = vol;
+                                        lbl_maxVol.Text = highVal.ToString();
+                                    });
+                                }
                             }
                         }
-                    }
+                    });
+
+                    
                 } catch {}
             }
         }
@@ -216,16 +249,19 @@ namespace Mr_Fish
             botThread = new Thread(new ThreadStart(bot_start));
             botThread.IsBackground = true;
             botThread.Start();
-            tssl_status.Text = "Aktiv" + " (" + DateTime.Now.ToString("HH:mm:ss tt") + "Uhr )";
+            startTime = DateTime.Now;
+            formatStatusText();
+            updateStartStopButtons();
         }
         private void btn_stop_Click(object sender, EventArgs e)
         {
             try
             {
-            active = false;
-            botThread.Abort();
-            botThread = null;
-            tssl_status.Text = "Inaktiv";
+                active = false;
+                botThread.Abort();
+                botThread = null;
+                tssl_status.Text = "Inactive";
+                updateStartStopButtons();
             } catch { };
         }
         private void btn_calibrate_Click(object sender, EventArgs e)
@@ -233,7 +269,7 @@ namespace Mr_Fish
             highVal = 0;
             lbl_maxVol.Text = highVal.ToString();
         }
-    }
+    } 
 
     public class Item
     {
@@ -246,58 +282,6 @@ namespace Mr_Fish
         public override string ToString()
         {
             return Name;
-        }
-    }
-    public static class VirtualMouse
-    {
-        // import the necessary API function so .NET can
-        // marshall parameters appropriately
-        [DllImport("user32.dll")]
-        static extern void mouse_event(int dwFlags, int dx, int dy, int dwData, int dwExtraInfo);
-
-        // constants for the mouse_input() API function
-        private const int MOUSEEVENTF_MOVE = 0x0001;
-        private const int MOUSEEVENTF_LEFTDOWN = 0x0002;
-        private const int MOUSEEVENTF_LEFTUP = 0x0004;
-        private const int MOUSEEVENTF_RIGHTDOWN = 0x0008;
-        private const int MOUSEEVENTF_RIGHTUP = 0x0010;
-        private const int MOUSEEVENTF_MIDDLEDOWN = 0x0020;
-        private const int MOUSEEVENTF_MIDDLEUP = 0x0040;
-        private const int MOUSEEVENTF_ABSOLUTE = 0x8000;
-
-
-        // simulates movement of the mouse.  parameters specify changes
-        // in relative position.  positive values indicate movement
-        // right or down
-        public static void Move(int xDelta, int yDelta)
-        {
-            mouse_event(MOUSEEVENTF_MOVE, xDelta, yDelta, 0, 0);
-        }
-
-
-        // simulates movement of the mouse.  parameters specify an
-        // absolute location, with the top left corner being the
-        // origin
-        public static void MoveTo(int x, int y)
-        {
-            mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, x, y, 0, 0);
-        }
-
-
-        // simulates a click-and-release action of the left mouse
-        // button at its current position
-        public static void LeftClick()
-        {
-            mouse_event(MOUSEEVENTF_LEFTDOWN, Control.MousePosition.X, Control.MousePosition.Y, 0, 0);
-            mouse_event(MOUSEEVENTF_LEFTUP, Control.MousePosition.X, Control.MousePosition.Y, 0, 0);
-        }
-
-        // simulates a click-and-release action of the left mouse
-        // button at its current position
-        public static void RightClick()
-        {
-            mouse_event(MOUSEEVENTF_RIGHTDOWN, Control.MousePosition.X, Control.MousePosition.Y, 0, 0);
-            mouse_event(MOUSEEVENTF_RIGHTUP, Control.MousePosition.X, Control.MousePosition.Y, 0, 0);
         }
     }
 }

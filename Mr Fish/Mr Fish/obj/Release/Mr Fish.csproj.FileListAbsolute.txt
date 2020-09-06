@@ -1,0 +1,16 @@
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\obj\Release\Mr_Fish.Form1.resources
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\obj\Release\Mr_Fish.Properties.Resources.resources
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\obj\Release\Mr Fish.csproj.GenerateResource.cache
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\obj\Release\Mr Fish.csproj.CoreCompileInputs.cache
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\obj\Release\Mr Fish.exe
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\obj\Release\Mr Fish.pdb
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\bin\Release\Mr Fish.exe.config
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\bin\Release\Mr Fish.exe
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\bin\Release\Mr Fish.pdb
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\bin\Release\Costura.dll
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\bin\Release\CSCore.dll
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\bin\Release\Costura.xml
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\bin\Release\CSCore.xml
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\obj\Release\Mr Fish.csprojAssemblyReference.cache
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\obj\Release\Mr Fish.csproj.Fody.CopyLocal.cache
+C:\Users\Daniel\Documents\GitHub\Mr.-Fish\Mr Fish\Mr Fish\obj\Release\Mr Fish.csproj.CopyComplete
