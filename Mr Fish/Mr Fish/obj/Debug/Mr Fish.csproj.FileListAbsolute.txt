@@ -1,0 +1,11 @@
+c:\users\kellojo\documents\visual studio 2015\Projects\Mr Fish\Mr Fish\bin\Debug\Mr Fish.exe.config
+c:\users\kellojo\documents\visual studio 2015\Projects\Mr Fish\Mr Fish\bin\Debug\Mr Fish.exe
+c:\users\kellojo\documents\visual studio 2015\Projects\Mr Fish\Mr Fish\bin\Debug\Mr Fish.pdb
+c:\users\kellojo\documents\visual studio 2015\Projects\Mr Fish\Mr Fish\obj\Debug\Mr Fish.csprojResolveAssemblyReference.cache
+c:\users\kellojo\documents\visual studio 2015\Projects\Mr Fish\Mr Fish\obj\Debug\Mr_Fish.Form1.resources
+c:\users\kellojo\documents\visual studio 2015\Projects\Mr Fish\Mr Fish\obj\Debug\Mr_Fish.Properties.Resources.resources
+c:\users\kellojo\documents\visual studio 2015\Projects\Mr Fish\Mr Fish\obj\Debug\Mr Fish.csproj.GenerateResource.Cache
+c:\users\kellojo\documents\visual studio 2015\Projects\Mr Fish\Mr Fish\obj\Debug\Mr Fish.exe
+c:\users\kellojo\documents\visual studio 2015\Projects\Mr Fish\Mr Fish\obj\Debug\Mr Fish.pdb
+C:\Users\Kellojo\documents\visual studio 2015\Projects\Mr Fish\Mr Fish\bin\Debug\CSCore.dll
+C:\Users\Kellojo\documents\visual studio 2015\Projects\Mr Fish\Mr Fish\bin\Debug\CSCore.xml
