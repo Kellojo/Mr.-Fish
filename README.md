@@ -4,6 +4,10 @@ Mr. Fish is a free fishing bot for Minecraft. It uses sound to operate.
 Have fun!
 Feel free to do whatever you want with this.
 
+[![How to use tutorial video](https://img.youtube.com/vi/ZrK9BK8-kpI/0.jpg)](https://www.youtube.com/watch?v=ZrK9BK8-kpI)
+
+
+
 ## How to use:
 
 If you want to use the bot without having to focus the Minecraft Window do the following:
