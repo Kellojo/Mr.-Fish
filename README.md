@@ -1,4 +1,4 @@
-**No longer working unfortunately**
+**ℹ️ The bot is unfortunately no longer working, due to issues with the code. In case you would like to pick up the code again to get it working, feel free to do so. ℹ️**
 
 # Mr. Fish
 Mr. Fish is a free fishing bot for Minecraft. It uses sound to operate.
